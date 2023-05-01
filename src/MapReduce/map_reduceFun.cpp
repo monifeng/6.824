@@ -1,3 +1,13 @@
+/*
+ * @Author: monifeng 1098264843@qq.com
+ * @Date: 2023-05-01 20:00:05
+ * @LastEditors: monifeng 1098264843@qq.com
+ * @LastEditTime: 2023-05-01 20:04:03
+ * @FilePath: /6.824/src/MapReduce/map_reduceFun.cpp
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by monifeng, All Rights Reserved. 
+ */
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +53,7 @@ vector<string> split(char* text, int length){
 /**
  * @brief mapFunc，需要打包成动态库，并在worker中通过dlopen以及dlsym运行时加载
  * @param kv 将文本按单词划分并以出现次数代表value长度存入keyValue
- * @return 类似{"my 11111", "you 111"} 即文章中my出现了5次，you出现了3次
+ * @return 类似{{"my", "1"}, {"my", "1"}, {"you", "1"}} 即文章中my出现了2次，you出现了1次
  */
 extern "C" vector<KeyValue> mapF(KeyValue kv){
     vector<KeyValue> kvs;
