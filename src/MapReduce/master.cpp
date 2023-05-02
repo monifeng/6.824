@@ -180,12 +180,14 @@ void Master::setMapStat(string filename){
 }
 
 bool Master::isMapDone(){
-    m_assign_lock.lock();
-    if(finishedMapTask.size() != fileNum){  //当统计map任务的hashmap大小达到文件数，map任务结束
+    int sz = 0;
+    {
+        m_assign_lock.lock();
+        sz = finishedMapTask.size();
         m_assign_lock.unlock();
-        return false;
     }
-    m_assign_lock.unlock();
+    
+    if (sz != fileNum) return false;
     return true;
 }
 

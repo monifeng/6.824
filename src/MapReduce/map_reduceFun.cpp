@@ -2,7 +2,7 @@
  * @Author: monifeng 1098264843@qq.com
  * @Date: 2023-05-01 20:00:05
  * @LastEditors: monifeng 1098264843@qq.com
- * @LastEditTime: 2023-05-01 20:04:03
+ * @LastEditTime: 2023-05-01 21:16:55
  * @FilePath: /6.824/src/MapReduce/map_reduceFun.cpp
  * @Description: 
  * 
@@ -71,13 +71,12 @@ extern "C" vector<KeyValue> mapF(KeyValue kv){
 }
 
 /**
- * @brief redecuFunc，也是动态加载，输出对特定keyValue的reduce结果
- * @param reduceTaskIdx 好像多余了，后来才发现的，放着也没事，懒得重新编译.so了
- * @return vector<string>
+ * @brief reduceFunc，也是动态加载，输出对特定keyValue的reduce结果
+ * @param reduceTaskIdx
+ * @return vector<string>, {"my", "1111"}, {"you", "11"}, my出现4次，you有2次
  */
 extern "C" vector<string> reduceF(vector<KeyValue> kvs, int reduceTaskIdx){
     vector<string> str;
-    string tmp;
     for(const auto& kv : kvs){
         str.push_back(to_string(kv.value.size()));
     }
